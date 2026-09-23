@@ -1,7 +1,7 @@
 {
   "name": "HouseMade",
   "short_name": "HouseMade",
-  "description": "A cheerful household planner with Quick Clean and Deep Clean routines, timers, reminders and rewarding completion animations.",
+  "description": "A premium household planner with Quick and Deep Clean routines, diary planning, family prompt queues, motivational progress and a retro cleaning mini-game.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -38,45 +38,76 @@
 
   <main id="workspace" class="workspace">
     <section id="homePanel" class="panel active-panel">
-      <div id="greetingCard" class="greeting-card">
+      <div id="greetingCard" class="greeting-card pro-hero">
         <div id="greetingParticles" class="particle-field"></div>
-        <p class="kicker light">HOUSEMADE</p>
-        <h1 class="greeting-line"><span id="greetingHey"></span><span id="greetingMake"></span><em id="greetingTogether"></em></h1>
-      </div>
-
-      <div class="planner-toolbar">
-        <div class="segments" role="tablist">
-          <button class="segment" data-view="day">Daily</button>
-          <button class="segment active" data-view="week">Weekly</button>
-          <button class="segment" data-view="month">Monthly</button>
+        <div class="hero-copy">
+          <p class="kicker light">HOUSEMADE</p>
+          <h1 class="greeting-line"><span id="greetingHey"></span><span id="greetingMake"></span><em id="greetingTogether"></em></h1>
+          <p class="hero-subline">A calmer house, one satisfying little win at a time.</p>
         </div>
-        <div id="periodControls" class="period-controls hidden"><button id="prevPeriod" class="mini-btn">‹</button><strong id="periodLabel"></strong><button id="nextPeriod" class="mini-btn">›</button></div>
+        <div class="hero-room-art" aria-hidden="true">
+          <div class="room-window"><i></i><i></i></div>
+          <div class="room-plant"><i></i><b></b></div>
+          <div class="room-sofa"><i></i><i></i></div>
+          <img src="./icon-192.png" alt="">
+          <span class="hero-swish"></span>
+        </div>
       </div>
 
-      <div class="section-head"><div><p class="kicker lavender">YOUR PLANNER</p><h2>What the house needs</h2></div><span id="plannerSummary"></span></div>
-      <div id="planner" class="planner"></div>
+      <div class="home-dashboard">
+        <section class="progress-board surface">
+          <div class="progress-head"><div><p class="kicker lavender">THIS WEEK</p><h2>Chaos defeated</h2></div><strong id="progressPercent">0%</strong></div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="mess-token token-one">●</div><div class="mess-token token-two">✦</div><div class="mess-token token-three">◆</div>
+            <div id="progressFill" class="progress-fill"></div>
+            <div id="progressDuster" class="progress-duster"><img src="./icon-192.png" alt=""></div>
+          </div>
+          <div class="progress-stats"><div><b id="progressDone">0</b><span>finished</span></div><div><b id="progressRooms">0</b><span>rooms touched</span></div><div><b id="progressLeft">0</b><span>still waiting</span></div></div>
+          <p id="progressMessage" class="progress-message">A clean slate starts with one tiny swipe.</p>
+        </section>
 
-      <div class="section-head"><div><p class="kicker lavender">UP NEXT</p><h2>One room at a time</h2></div></div>
+        <div class="home-feature-stack">
+          <button id="yourButton" class="feature-card self-care-card">
+            <span class="feature-orb">♥</span><div><p class="kicker">YOUR BUTTON</p><b>A little something for you</b><small>You do a lot. Tap for a reminder, reset or treat idea.</small></div><span class="feature-arrow">›</span>
+          </button>
+          <button id="openGame" class="feature-card game-card">
+            <span class="feature-orb">✦</span><div><p class="kicker">TIDY ARCADE</p><b>Clean Break</b><small>A tiny retro cleaning game. Clear the mess. Don’t hit the furniture.</small></div><span class="feature-arrow">›</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="section-head"><div><p class="kicker lavender">UP NEXT</p><h2>What’s coming up</h2></div><button class="text-arrow" data-go="schedule">Planner <span>→</span></button></div>
       <div id="upNext" class="up-next"></div>
-
-      <div class="encourage-card"><div class="spark-icon">✦</div><div><b>Small resets count.</b><span>You don’t need to finish the whole house to make the house feel better.</span></div></div>
+      <div class="encourage-card premium"><div class="spark-icon">✦</div><div><b>Small resets count.</b><span>You don’t need to finish the whole house to make the house feel better.</span></div></div>
     </section>
 
     <section id="schedulePanel" class="panel">
-      <div class="page-heading"><p class="kicker lavender">PLANNER BUILDER</p><h1>Build the rhythm</h1><p>Set the room, clean mode, recurrence, assignment and reminder time.</p></div>
-      <div class="surface form-card">
-        <div class="form-grid">
-          <label>Room / task<select id="schedTask"></select></label>
-          <label>Clean type<select id="schedMode"><option value="quick">Quick Clean</option><option value="deep">Deep Clean</option></select></label>
-          <label>Day<select id="schedDay"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></label>
-          <label>Repeat<select id="schedRepeat"><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label>
-          <label>Assign to<select id="schedMember"></select></label>
-          <label>Reminder time<input id="schedTime" type="time" value="18:00"></label>
+      <div class="page-heading split planner-heading"><div><p class="kicker lavender">HOUSEMADE PLANNER</p><h1>Planner</h1><p>Your household diary for routines, chores, family prompts and the things that keep the week moving.</p></div><button id="openPlannerAdd" class="planner-plus" aria-label="Add task to planner">＋</button></div>
+
+      <section class="surface planner-shell">
+        <div class="planner-topline">
+          <div class="segments planner-segments" role="tablist">
+            <button class="segment" data-view="day">Day</button>
+            <button class="segment active" data-view="week">Week</button>
+            <button class="segment" data-view="month">Month</button>
+          </div>
+          <div id="periodControls" class="period-controls"><button id="prevPeriod" class="mini-btn" aria-label="Previous period">‹</button><strong id="periodLabel"></strong><button id="nextPeriod" class="mini-btn" aria-label="Next period">›</button></div>
+          <span id="plannerSummary" class="planner-summary"></span>
         </div>
-        <button id="addSchedule" class="primary-btn icon-action"><span>＋</span>Add to schedule</button>
+        <div id="planner" class="planner diary"></div>
+      </section>
+
+      <div class="planner-lower-grid">
+        <section class="surface prompt-queue-card">
+          <div class="section-head tight"><div><p class="kicker lavender">PROMPT QUEUE</p><h2>Family chore prompts</h2></div><span id="promptQueueCount"></span></div>
+          <p class="queue-intro">This is the foundation for future Apple-native reminder actions. For now, HouseMade prepares each prompt for copy, Messages, email or local notification.</p>
+          <div id="promptQueue" class="prompt-queue"></div>
+        </section>
+        <section class="surface schedule-foundation">
+          <div class="section-head tight"><div><p class="kicker lavender">PLANNER TASKS</p><h2>Recurring foundations</h2></div></div>
+          <div id="scheduleList" class="stack-list compact-list"></div>
+        </section>
       </div>
-      <div class="section-head"><div><p class="kicker lavender">RECURRING CHORES</p><h2>House schedule</h2></div></div>
-      <div id="scheduleList" class="stack-list"></div>
     </section>
 
     <section id="familyPanel" class="panel">
@@ -127,7 +158,7 @@
 
   <nav class="bottom-nav" aria-label="Primary navigation">
     <button class="nav-btn active" data-go="home"><span>⌂</span><b>Home</b></button>
-    <button class="nav-btn" data-go="schedule"><span>▣</span><b>Schedule</b></button>
+    <button class="nav-btn" data-go="schedule"><span>▣</span><b>Planner</b></button>
     <button class="nav-btn" data-go="family"><span>♧</span><b>Family</b></button>
     <button class="nav-btn" data-go="tasks"><span>✦</span><b>Tasks</b></button>
     <button class="nav-btn" data-go="settings"><span>⚙</span><b>Settings</b></button>
@@ -162,7 +193,7 @@
     <button class="sheet-close" id="closeTask" aria-label="Close">×</button>
     <div class="task-head"><div id="taskMaster" class="master-orb"></div><div><p id="taskModeLabel" class="kicker lavender"></p><h2 id="taskTitle"></h2><p id="taskProgressText" class="muted"></p></div></div>
     <div class="mode-tabs"><button data-mode="quick" class="mode-tab active">Quick Clean<span>The essentials</span></button><button data-mode="deep" class="mode-tab">Deep Clean<span>The full reset</span></button></div>
-    <div id="quoteCard" class="quote-card"><div id="quoteDust" class="quote-dust"></div><span class="quote-mark">“</span><b id="quoteText"></b><button id="anotherQuote">Another</button></div>
+    <div id="quoteCard" class="quote-card"><div id="quoteDust" class="quote-dust"></div><span class="quote-mark">“</span><b id="quoteText"></b><button id="anotherQuote" class="quote-arrow" aria-label="Show another quote">→</button></div>
     <div id="subtasks" class="subtask-grid"></div>
     <div class="focus-card">
       <div class="timer-visual"><svg viewBox="0 0 120 120"><circle class="timer-track" cx="60" cy="60" r="50"></circle><circle id="timerRing" class="timer-ring" cx="60" cy="60" r="50"></circle></svg><div><b id="timerReadout">15:00</b><span>focus timer</span></div></div>
@@ -188,6 +219,52 @@
     <textarea id="reminderText" class="reminder-text"></textarea>
     <div class="reminder-actions"><button id="regenReminder" class="secondary-btn">↻ Another</button><button id="copyReminder" class="secondary-btn">Copy</button><button id="sendReminder" class="primary-btn">Send / open</button></div>
     <div class="local-reminder"><label>Local notification in<input id="reminderDelay" type="number" min="1" max="1440" value="10">minutes</label><button id="setLocalReminder" class="secondary-btn">Set reminder</button></div>
+  </div>
+</section>
+
+
+<section id="plannerAddModal" class="modal hidden" aria-modal="true">
+  <div class="sheet planner-add-sheet">
+    <button class="sheet-close" id="closePlannerAdd" aria-label="Close">×</button>
+    <p class="kicker lavender">ADD TO PLANNER</p><h2>Plan a household task</h2><p class="muted">One task can sit on several days, at several times, and be assigned to the people who share it.</p>
+    <div class="form-grid">
+      <label>Room / task<select id="schedTask"></select></label>
+      <label>Clean type<select id="schedMode"><option value="quick">Quick Clean</option><option value="deep">Deep Clean</option></select></label>
+      <label>Repeat<select id="schedRepeat"><option value="once">One week only</option><option value="weekly" selected>Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label>
+      <label>Starts<input id="schedStart" type="date"></label>
+    </div>
+    <div class="planner-form-section"><div class="field-caption"><b>Days</b><span>Select one or several</span></div><div id="schedDays" class="multi-chip-grid day-chip-grid"></div></div>
+    <div class="planner-form-section"><div class="field-caption"><b>Times</b><span>Add as many as the routine needs</span></div><div class="time-builder"><input id="plannerTimeInput" type="time" value="18:00"><button id="addPlannerTime" class="secondary-btn">＋ Add time</button></div><div id="plannerTimeChips" class="time-chip-row"></div></div>
+    <div class="planner-form-section"><div class="field-caption"><b>Family chores</b><span>Optional — assign to one or more people</span></div><div id="schedAssignees" class="multi-chip-grid"></div></div>
+    <label>Note for the household<textarea id="schedNote" placeholder="Optional note, e.g. school uniforms first"></textarea></label>
+    <label class="check-line"><input id="schedNotify" type="checkbox" checked><span><b>Add to prompt queue</b><small>Prepare reminders and local notifications for assigned family chores.</small></span></label>
+    <button id="addSchedule" class="primary-btn wide icon-action"><span>＋</span>Add to Planner</button>
+  </div>
+</section>
+
+<section id="selfCareModal" class="modal hidden" aria-modal="true">
+  <div class="sheet compact-sheet self-care-sheet">
+    <button class="sheet-close" id="closeSelfCare" aria-label="Close">×</button>
+    <div id="selfCareGlow" class="self-care-glow"></div>
+    <p class="kicker lavender">YOUR BUTTON</p>
+    <div id="selfCareIcon" class="self-care-icon">♥</div>
+    <h2 id="selfCareTitle">This bit is for you.</h2>
+    <p id="selfCareText" class="self-care-text"></p>
+    <button id="anotherSelfCare" class="self-care-next" aria-label="Another suggestion">→</button>
+  </div>
+</section>
+
+<section id="gameModal" class="game-overlay hidden" aria-modal="true">
+  <div class="handheld-shell">
+    <div class="handheld-top"><div><p class="kicker">HOUSEMADE · TIDY ARCADE</p><h2>Clean Break</h2></div><button id="closeGame" class="game-close" aria-label="Close game">×</button></div>
+    <div class="game-status"><span>ROOM <b id="gameStage">Bedroom</b></span><span>SCORE <b id="gameScore">000</b></span><span>MESS <b id="gameMess">0/0</b></span></div>
+    <div class="game-screen-wrap"><canvas id="gameCanvas" width="360" height="360" aria-label="Clean Break game screen"></canvas><div id="gameMessage" class="game-message"><b>Clean Break</b><span>Collect every bit of mess. Avoid the furniture and your own cleaning trail.</span><button id="startGame" class="game-start">Start</button></div></div>
+    <div class="console-controls">
+      <div class="joystick-zone"><div id="joystickBase" class="joystick-base"><div id="joystickKnob" class="joystick-knob"></div></div><span>JOYSTICK</span></div>
+      <div class="console-center"><button id="pauseGame" class="console-pill">PAUSE</button><div class="console-speaker"><i></i><i></i><i></i><i></i></div></div>
+      <div class="direction-zone"><div class="direction-pad"><button data-dir="up" aria-label="Up">↑</button><button data-dir="left" aria-label="Left">←</button><button data-dir="right" aria-label="Right">→</button><button data-dir="down" aria-label="Down">↓</button></div><span>DIRECTION</span></div>
+    </div>
+    <p class="game-tip">Use the joystick or direction buttons. Keyboard arrows work too.</p>
   </div>
 </section>
 

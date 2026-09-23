@@ -1,29 +1,37 @@
-# HouseMade — Flat GitHub PWA v2
+# HouseMade v3 — Flat GitHub PWA
 
-HouseMade is a completely self-contained installable PWA. No build step or server backend is required.
+HouseMade v3 is a self-contained installable Progressive Web App designed to run from a flat static host such as GitHub Pages.
 
-## GitHub Pages
-1. Create/open a GitHub repository.
-2. Upload **all files from this ZIP to the repository root** (do not upload the enclosing folder).
-3. In GitHub: Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
-4. Open the resulting HTTPS URL on the phone/tablet.
-5. iPhone/iPad: Share → Add to Home Screen. Android/desktop Chrome: Install app / Add to Home Screen.
-6. The browser page intentionally shows installation instructions only. The HouseMade workspace opens in standalone/install mode.
+## Publish
+Upload these files to the root of the GitHub Pages repository and enable Pages for the branch/folder you use:
+- index.html
+- styles.css
+- app.js
+- manifest.webmanifest
+- sw.js
+- icon-192.png
+- icon-512.png
+- apple-touch-icon.png
 
-## What works without a backend
-- Daily / weekly / true calendar-month planner
-- Weekly / biweekly / monthly recurring chores
-- Quick Clean and Deep Clean profiles
-- Editable master cleaning-step library
-- Family assignments
-- Generated copy/SMS/email/Alexa-ready reminder messages
-- Local notification permission + reminders while HouseMade is running
-- Timers, playlist links, sound effects and completion animations
-- Offline use and device-local persistence
-- Optional hashed local PIN
+The normal browser view intentionally shows only installation guidance. The full HouseMade workspace opens from the installed PWA.
 
-## Static-PWA limitation
-A flat PWA cannot guarantee a scheduled SMS/email or a notification after the app has been fully closed by the operating system. HouseMade therefore uses one-tap SMS/email handoff and local notifications while the installed PWA is active/running. Fully automatic external messaging would require a backend/provider.
+## v3 highlights
+- Premium redesigned Home dashboard with upcoming tasks and a quirky weekly progress board.
+- Schedule renamed to **Planner**.
+- Planner includes Day, Week and Month diary/calendar views with previous/next navigation.
+- Floating `+` opens a planner window that can place one chore on multiple days and multiple times.
+- Weekly, biweekly, monthly and one-week-only recurrence options.
+- Planner chores can be assigned to one or several family members.
+- Family assignments automatically form a **Prompt Queue**, ready for future native Apple notification/action integration.
+- Prompt Queue currently supports generated reminder copy, SMS handoff, email handoff, Alexa-ready copy text and local PWA notifications where supported.
+- **Your Button** generates a random self-care reminder, appreciation note or small treat/reset suggestion.
+- **Clean Break** mini-game: a five-stage retro handheld cleaning game. Collect mess, grow your cleaning trail, avoid obstacles and clear Bedroom → Kitchen → Bathroom → Living Room → Garage.
+- Game controls include both a left-side touch joystick and right-side Up / Down / Left / Right buttons, plus keyboard arrows.
+- Improved visual room imagery, richer cards, transitions, quote presentation and completion feedback.
+- Quote refresh is now a small arrow rather than an “Another” text button.
+- Existing Quick Clean / Deep Clean customization, timers, playlist links, sounds, gold completion and offline local persistence remain intact.
 
-## Icon
-The icon is a simplified traditional bell/fan-shaped feather duster, flipped 180° from the earlier concept: white silhouette on flat HouseMade lavender.
+## Important flat-PWA limitation
+GitHub Pages is static hosting. HouseMade can prepare reminder queues and can show local notifications while the installed PWA is active and the browser/runtime permits them. It cannot guarantee background scheduled delivery after iOS fully terminates the PWA, and it cannot silently send SMS/email without a server/provider.
+
+The Planner and Prompt Queue data model is deliberately structured so those actions can later be connected to an Apple-native wrapper, push service or messaging backend without redesigning the planner itself.
