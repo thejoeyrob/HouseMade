@@ -35,3 +35,9 @@ The normal browser view intentionally shows only installation guidance. The full
 GitHub Pages is static hosting. HouseMade can prepare reminder queues and can show local notifications while the installed PWA is active and the browser/runtime permits them. It cannot guarantee background scheduled delivery after iOS fully terminates the PWA, and it cannot silently send SMS/email without a server/provider.
 
 The Planner and Prompt Queue data model is deliberately structured so those actions can later be connected to an Apple-native wrapper, push service or messaging backend without redesigning the planner itself.
+
+
+## v3.1 game controls
+- Replaced joystick + small D-pad with one large four-way control pad.
+- Pointer-down input and a short direction queue improve rapid cornering and Right-button response.
+- Playfield wraps at all four edges: exiting one side re-enters from the opposite side.

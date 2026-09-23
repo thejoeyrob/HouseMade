@@ -258,13 +258,20 @@
   <div class="handheld-shell">
     <div class="handheld-top"><div><p class="kicker">HOUSEMADE · TIDY ARCADE</p><h2>Clean Break</h2></div><button id="closeGame" class="game-close" aria-label="Close game">×</button></div>
     <div class="game-status"><span>ROOM <b id="gameStage">Bedroom</b></span><span>SCORE <b id="gameScore">000</b></span><span>MESS <b id="gameMess">0/0</b></span></div>
-    <div class="game-screen-wrap"><canvas id="gameCanvas" width="360" height="360" aria-label="Clean Break game screen"></canvas><div id="gameMessage" class="game-message"><b>Clean Break</b><span>Collect every bit of mess. Avoid the furniture and your own cleaning trail.</span><button id="startGame" class="game-start">Start</button></div></div>
-    <div class="console-controls">
-      <div class="joystick-zone"><div id="joystickBase" class="joystick-base"><div id="joystickKnob" class="joystick-knob"></div></div><span>JOYSTICK</span></div>
-      <div class="console-center"><button id="pauseGame" class="console-pill">PAUSE</button><div class="console-speaker"><i></i><i></i><i></i><i></i></div></div>
-      <div class="direction-zone"><div class="direction-pad"><button data-dir="up" aria-label="Up">↑</button><button data-dir="left" aria-label="Left">←</button><button data-dir="right" aria-label="Right">→</button><button data-dir="down" aria-label="Down">↓</button></div><span>DIRECTION</span></div>
+    <div class="game-screen-wrap"><canvas id="gameCanvas" width="360" height="360" aria-label="Clean Break game screen"></canvas><div id="gameMessage" class="game-message"><b>Clean Break</b><span>Collect every bit of mess. Avoid the furniture and your own trail. The room wraps at every edge.</span><button id="startGame" class="game-start">Start</button></div></div>
+    <div class="console-controls single-control">
+      <div class="direction-zone main-direction-zone">
+        <div class="direction-pad direction-pad-large" aria-label="Game direction controls">
+          <button data-dir="up" aria-label="Up"><span>↑</span></button>
+          <button data-dir="left" aria-label="Left"><span>←</span></button>
+          <button data-dir="right" aria-label="Right"><span>→</span></button>
+          <button data-dir="down" aria-label="Down"><span>↓</span></button>
+        </div>
+        <span>DIRECTION</span>
+      </div>
+      <div class="console-center compact-console-center"><button id="pauseGame" class="console-pill">PAUSE</button><div class="console-speaker"><i></i><i></i><i></i><i></i></div></div>
     </div>
-    <p class="game-tip">Use the joystick or direction buttons. Keyboard arrows work too.</p>
+    <p class="game-tip">Tap the large direction pad. The room wraps at every edge — leave one side and re-enter from the opposite side.</p>
   </div>
 </section>
 
