@@ -41,3 +41,10 @@ The Planner and Prompt Queue data model is deliberately structured so those acti
 - Replaced joystick + small D-pad with one large four-way control pad.
 - Pointer-down input and a short direction queue improve rapid cornering and Right-button response.
 - Playfield wraps at all four edges: exiting one side re-enters from the opposite side.
+
+
+## v3.2 game display update
+- Clean Break now opens as a dedicated edge-to-edge full-screen game surface instead of a scrolling modal.
+- HouseMade page scrolling and overscroll are locked while the game is open.
+- The game screen and four-way controls scale to the available device height, including landscape layouts and safe areas.
+- Closing the game restores the normal HouseMade workspace.
