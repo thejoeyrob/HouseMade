@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#B59EE2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="HouseMade">
+<title>HouseMade</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" href="./icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<section id="browserGate" class="gate hidden" aria-live="polite">
+  <div class="gate-card">
+    <div class="gate-glow"></div>
+    <img class="gate-icon" src="./icon-512.png" alt="HouseMade feather duster icon">
+    <p class="kicker">YOUR HOME · MADE LIGHTER</p>
+    <h1>HouseMade</h1>
+    <p class="gate-copy">HouseMade is designed to feel like an app, not a web page. Install it to unlock the full workspace.</p>
+    <button id="installBtn" class="primary-btn hidden">Install HouseMade</button>
+    <div id="installSteps" class="install-steps"></div>
+    <small>After installation, open HouseMade from your Home Screen or app launcher.</small>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="HouseMade home"><img src="./icon-192.png" alt=""><span>HouseMade</span></button>
+    <div class="top-actions">
+      <button id="notificationBell" class="round-btn" aria-label="Notifications"><span class="bell">♢</span><span id="notificationDot" class="notification-dot hidden"></span></button>
+      <button class="round-btn" data-go="settings" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main id="workspace" class="workspace">
+    <section id="homePanel" class="panel active-panel">
+      <div id="greetingCard" class="greeting-card">
+        <div id="greetingParticles" class="particle-field"></div>
+        <p class="kicker light">HOUSEMADE</p>
+        <h1 class="greeting-line"><span id="greetingHey"></span><span id="greetingMake"></span><em id="greetingTogether"></em></h1>
+      </div>
+
+      <div class="planner-toolbar">
+        <div class="segments" role="tablist">
+          <button class="segment" data-view="day">Daily</button>
+          <button class="segment active" data-view="week">Weekly</button>
+          <button class="segment" data-view="month">Monthly</button>
+        </div>
+        <div id="periodControls" class="period-controls hidden"><button id="prevPeriod" class="mini-btn">‹</button><strong id="periodLabel"></strong><button id="nextPeriod" class="mini-btn">›</button></div>
+      </div>
+
+      <div class="section-head"><div><p class="kicker lavender">YOUR PLANNER</p><h2>What the house needs</h2></div><span id="plannerSummary"></span></div>
+      <div id="planner" class="planner"></div>
+
+      <div class="section-head"><div><p class="kicker lavender">UP NEXT</p><h2>One room at a time</h2></div></div>
+      <div id="upNext" class="up-next"></div>
+
+      <div class="encourage-card"><div class="spark-icon">✦</div><div><b>Small resets count.</b><span>You don’t need to finish the whole house to make the house feel better.</span></div></div>
+    </section>
+
+    <section id="schedulePanel" class="panel">
+      <div class="page-heading"><p class="kicker lavender">PLANNER BUILDER</p><h1>Build the rhythm</h1><p>Set the room, clean mode, recurrence, assignment and reminder time.</p></div>
+      <div class="surface form-card">
+        <div class="form-grid">
+          <label>Room / task<select id="schedTask"></select></label>
+          <label>Clean type<select id="schedMode"><option value="quick">Quick Clean</option><option value="deep">Deep Clean</option></select></label>
+          <label>Day<select id="schedDay"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></label>
+          <label>Repeat<select id="schedRepeat"><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label>
+          <label>Assign to<select id="schedMember"></select></label>
+          <label>Reminder time<input id="schedTime" type="time" value="18:00"></label>
+        </div>
+        <button id="addSchedule" class="primary-btn icon-action"><span>＋</span>Add to schedule</button>
+      </div>
+      <div class="section-head"><div><p class="kicker lavender">RECURRING CHORES</p><h2>House schedule</h2></div></div>
+      <div id="scheduleList" class="stack-list"></div>
+    </section>
+
+    <section id="familyPanel" class="panel">
+      <div class="page-heading"><p class="kicker lavender">HOUSEHOLD</p><h1>Share the load</h1><p>Add people without requiring them to install HouseMade. Generate a reminder, then copy it or hand it off to Messages or Mail.</p></div>
+      <div class="surface form-card">
+        <div class="form-grid">
+          <label>First name<input id="memberName" placeholder="Johnny"></label>
+          <label>Reminder method<select id="memberChannel"><option value="copy">Copy message</option><option value="sms">Text message</option><option value="email">Email</option><option value="alexa">Alexa / voice prompt</option></select></label>
+          <label class="span-two">Phone or email<input id="memberContact" placeholder="Optional for copy / Alexa"></label>
+        </div>
+        <button id="addMember" class="primary-btn icon-action"><span>＋</span>Add family member</button>
+      </div>
+      <div class="section-head"><div><p class="kicker lavender">PEOPLE</p><h2>Your household</h2></div></div>
+      <div id="memberList" class="stack-list"></div>
+      <div class="surface reminder-info">
+        <div class="reminder-orb">🔔</div>
+        <div><b>Local notifications</b><p>HouseMade can show reminder notifications while the installed PWA is running. A flat PWA cannot guarantee scheduled delivery after it has been fully closed, so SMS/email remains a one-tap handoff.</p></div>
+        <button id="enableNotifications" class="secondary-btn">Enable notifications</button>
+      </div>
+    </section>
+
+    <section id="tasksPanel" class="panel">
+      <div class="page-heading split"><div><p class="kicker lavender">PERSONALIZE TASKS</p><h1>Your version of clean</h1><p>Define exactly what Quick Clean and Deep Clean mean in your home.</p></div><button id="newTask" class="primary-btn compact">＋ New task</button></div>
+      <div id="taskLibrary" class="task-library"></div>
+      <div class="surface preset-manager">
+        <div class="section-head tight"><div><p class="kicker lavender">MASTER LIBRARY</p><h2>Available cleaning steps</h2></div></div>
+        <div class="add-preset"><input id="newPreset" placeholder="Add a new reusable step"><button id="addPreset" class="secondary-btn">Add</button></div>
+        <div id="presetLibrary" class="preset-cloud"></div>
+      </div>
+    </section>
+
+    <section id="settingsPanel" class="panel">
+      <div class="page-heading"><p class="kicker lavender">SETTINGS</p><h1>Make it yours</h1></div>
+      <div class="surface settings-card">
+        <label>Your first name<input id="settingsName"></label>
+        <label>Household name<input id="settingsHouse"></label>
+        <label>Cleaning playlist link<input id="musicUrl" placeholder="Spotify / Apple Music / YouTube Music"></label>
+        <label>Default timer (minutes)<input id="defaultTimer" type="number" min="1" max="180"></label>
+        <div class="setting-line"><div><b>Bright + bubbly sounds</b><span>Greeting shimmer, taps, timer cues and completion celebration.</span></div><button id="soundToggle" class="toggle" aria-pressed="true"><i></i></button></div>
+        <div class="setting-line"><div><b>Cozy night appearance</b><span>Switch the interface to a darker lavender palette.</span></div><button id="themeToggle" class="toggle" aria-pressed="false"><i></i></button></div>
+        <div class="settings-actions"><button id="saveSettings" class="primary-btn">Save settings</button><button id="lockNow" class="secondary-btn">Lock now</button></div>
+      </div>
+      <div class="surface settings-card">
+        <p class="kicker lavender">NOTIFICATIONS</p><h3>Reminder test</h3><p class="muted">This tests the device notification permission. Scheduled reminders are checked while HouseMade is running.</p><button id="testNotification" class="secondary-btn">Enable + send test</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="nav-btn active" data-go="home"><span>⌂</span><b>Home</b></button>
+    <button class="nav-btn" data-go="schedule"><span>▣</span><b>Schedule</b></button>
+    <button class="nav-btn" data-go="family"><span>♧</span><b>Family</b></button>
+    <button class="nav-btn" data-go="tasks"><span>✦</span><b>Tasks</b></button>
+    <button class="nav-btn" data-go="settings"><span>⚙</span><b>Settings</b></button>
+  </nav>
+</div>
+
+<section id="onboarding" class="overlay hidden">
+  <div class="onboarding-card">
+    <div class="intro-icon-wrap"><img src="./icon-512.png" alt=""><div class="intro-sparkles"></div></div>
+    <p class="kicker lavender">WELCOME HOME</p>
+    <h1>Meet HouseMade</h1>
+    <p>Housework with a little more momentum and a lot less nagging.</p>
+    <label>First name<input id="firstName" placeholder="Kalie" autocomplete="given-name"></label>
+    <label>Household name<input id="houseName" placeholder="Our House"></label>
+    <label>Optional local PIN<input id="pin" type="password" inputmode="numeric" maxlength="8" placeholder="4–8 digits"></label>
+    <button id="onboardBtn" class="primary-btn wide">Enter HouseMade</button>
+  </div>
+</section>
+
+<section id="lockScreen" class="overlay hidden">
+  <div class="onboarding-card lock-card">
+    <img class="lock-icon" src="./icon-192.png" alt="">
+    <p class="kicker lavender">WELCOME HOME</p><h1>Hey <span id="lockName"></span></h1><p>Enter your HouseMade PIN.</p>
+    <input id="unlockPin" class="pin-entry" type="password" inputmode="numeric" maxlength="8" placeholder="PIN">
+    <p id="unlockError" class="error-text"></p>
+    <button id="unlockBtn" class="primary-btn wide">Unlock HouseMade</button>
+  </div>
+</section>
+
+<section id="taskModal" class="modal hidden" aria-modal="true">
+  <div id="taskSheet" class="sheet task-sheet">
+    <button class="sheet-close" id="closeTask" aria-label="Close">×</button>
+    <div class="task-head"><div id="taskMaster" class="master-orb"></div><div><p id="taskModeLabel" class="kicker lavender"></p><h2 id="taskTitle"></h2><p id="taskProgressText" class="muted"></p></div></div>
+    <div class="mode-tabs"><button data-mode="quick" class="mode-tab active">Quick Clean<span>The essentials</span></button><button data-mode="deep" class="mode-tab">Deep Clean<span>The full reset</span></button></div>
+    <div id="quoteCard" class="quote-card"><div id="quoteDust" class="quote-dust"></div><span class="quote-mark">“</span><b id="quoteText"></b><button id="anotherQuote">Another</button></div>
+    <div id="subtasks" class="subtask-grid"></div>
+    <div class="focus-card">
+      <div class="timer-visual"><svg viewBox="0 0 120 120"><circle class="timer-track" cx="60" cy="60" r="50"></circle><circle id="timerRing" class="timer-ring" cx="60" cy="60" r="50"></circle></svg><div><b id="timerReadout">15:00</b><span>focus timer</span></div></div>
+      <div class="timer-presets"><button data-minutes="5">5</button><button data-minutes="10">10</button><button data-minutes="15" class="active">15</button><button data-minutes="30">30</button><button data-minutes="60">60</button></div>
+      <div class="focus-actions"><button id="taskMusic" class="secondary-btn">♫ Playlist</button><button id="taskReminder" class="secondary-btn">🔔 Remind me</button></div>
+    </div>
+    <button id="startTask" class="primary-btn wide start-task"><span id="startTaskText">Let’s get this house made</span><i>✦</i></button>
+  </div>
+</section>
+
+<section id="completionOverlay" class="completion-overlay hidden">
+  <div id="confettiField" class="confetti-field"></div>
+  <div class="completion-medal"><img src="./icon-192.png" alt=""></div>
+  <p class="kicker gold-text">HOUSEMADE</p><h1>All done!</h1><p id="completionRoom"></p>
+  <div id="completionQuote" class="completion-quote"></div>
+  <button id="completionClose" class="primary-btn">Nice work ✦</button>
+</section>
+
+<section id="reminderModal" class="modal hidden">
+  <div class="sheet compact-sheet">
+    <button class="sheet-close" id="closeReminder">×</button>
+    <p class="kicker lavender">FRIENDLY NUDGE</p><h2>Prompt <span id="reminderMember"></span></h2>
+    <textarea id="reminderText" class="reminder-text"></textarea>
+    <div class="reminder-actions"><button id="regenReminder" class="secondary-btn">↻ Another</button><button id="copyReminder" class="secondary-btn">Copy</button><button id="sendReminder" class="primary-btn">Send / open</button></div>
+    <div class="local-reminder"><label>Local notification in<input id="reminderDelay" type="number" min="1" max="1440" value="10">minutes</label><button id="setLocalReminder" class="secondary-btn">Set reminder</button></div>
+  </div>
+</section>
+
+<section id="editTaskModal" class="modal hidden">
+  <div class="sheet edit-sheet">
+    <button class="sheet-close" id="closeEdit">×</button>
+    <p class="kicker lavender">TASK PROFILE</p><h2 id="editHeading">Personalize task</h2>
+    <input id="editTaskId" type="hidden">
+    <div class="form-grid"><label>Task / room name<input id="editTaskName"></label><label>Task color<input id="editColor" type="color"></label></div>
+    <label class="field-label">Icon</label><div id="iconPicker" class="icon-picker"></div>
+    <div class="edit-section"><div class="section-head tight"><div><p class="kicker lavender">QUICK CLEAN</p><h3>Essentials</h3></div><span id="quickCount"></span></div><div id="quickPresets" class="preset-grid"></div><label>Custom Quick Clean items — one per line<textarea id="editQuick"></textarea></label></div>
+    <div class="edit-section"><div class="section-head tight"><div><p class="kicker lavender">DEEP CLEAN</p><h3>Full reset</h3></div><span id="deepCount"></span></div><div id="deepPresets" class="preset-grid"></div><label>Custom Deep Clean items — one per line<textarea id="editDeep"></textarea></label></div>
+    <button id="saveTaskEdit" class="primary-btn wide">Save task profile</button>
+  </div>
+</section>
+
+<div id="toast" class="toast" role="status"></div>
+<script src="./app.js"></script>
+</body>
+</html>

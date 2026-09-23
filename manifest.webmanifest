@@ -1,0 +1,25 @@
+{
+  "name": "HouseMade",
+  "short_name": "HouseMade",
+  "description": "A cheerful household planner with Quick Clean and Deep Clean routines, timers, reminders and rewarding completion animations.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F8F4FC",
+  "theme_color": "#B59EE2",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
